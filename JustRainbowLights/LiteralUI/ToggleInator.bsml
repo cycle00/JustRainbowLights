@@ -1,0 +1,3 @@
+﻿<settings-container>
+	<checkbox-setting text='Rainbow Lights' value='rainbow' hover-hint='Toggle the background rainbow lights'></checkbox-setting>
+</settings-container>
