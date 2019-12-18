@@ -12,5 +12,8 @@
     "BS Utils",
     "BeatSaberMarkupLanguage",
     "BSIPA"
-  ]
+  ],
+  "links": {
+    "project-source": "https://github.com/CycleWeeb/JustRainbowLights"
+  }
 }
