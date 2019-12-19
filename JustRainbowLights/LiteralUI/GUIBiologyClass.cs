@@ -1,9 +1,13 @@
-﻿using UnityEngine;
-
-namespace JustRainbowLights.LiteralUI
+﻿namespace JustRainbowLights.LiteralUI
 {
     internal class GUIBiologyClass
     {
-        internal static BS_Utils.Utilities.Config ModPrefs = new BS_Utils.Utilities.Config("JustRainbowLights/JustRainbowLights");
+        internal static BS_Utils.Utilities.Config ModPrefs;
     }
+    public enum Preset
+    {
+        Original = 0,
+        Warm = 1,
+        Cool = 2
+    }    
 }
