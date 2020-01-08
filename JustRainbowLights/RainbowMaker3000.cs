@@ -19,7 +19,7 @@ namespace JustRainbowLights
         {
             get
             {
-                return new Color(Random.Range(0.49f, 1f), Random.Range(0f, 0.75f), 0f, Random.Range(0.65f, 0.82f));
+                return new Color(Random.Range(0.5f, 1f), Random.Range(0f, 0.48f), Random.Range(0f, 0.1f), Random.Range(0.65f, 0.82f));
             }
         }
     }
@@ -30,7 +30,7 @@ namespace JustRainbowLights
         {
             get
             {
-                return new Color(0, Random.Range(0f, 1f), Random.Range(0.49f, 1f), Random.Range(0.65f, 0.82f));
+                return new Color(Random.Range(0f, 0.2f), Random.Range(0f, 1f), Random.Range(0.5f, 1f), Random.Range(0.65f, 0.82f));
             }
         }
     }
