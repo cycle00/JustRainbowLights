@@ -6,14 +6,16 @@ using UnityEngine.SceneManagement;
 using IPALogger = IPA.Logging.Logger;
 using UnityEngine;
 using JustRainbowLights.LiteralUI;
+using System.Linq;
+using System.Collections;
 
 namespace JustRainbowLights
 {
     public class Plugin : IBeatSaberPlugin
     {
-        private RainbowMaker3000 randColor;
-        private WarmthGiver3000 warmColor;
-        private MinecraftIceBlock coolColor;
+        public static RainbowMaker3000 randColor;
+        public static WarmthGiver3000 warmColor;
+        public static MinecraftIceBlock coolColor;
         public static LightSwitchEventEffect[] iSeeLight;
         internal static bool literalRainbows;
         private static GUIinator gui;
@@ -29,8 +31,6 @@ namespace JustRainbowLights
             warmColor = ScriptableObject.CreateInstance<WarmthGiver3000>();
             coolColor = ScriptableObject.CreateInstance<MinecraftIceBlock>();
             gui = new GameObject().AddComponent<GUIinator>();
-            SceneManager.sceneLoaded += OnSceneLoaded;
-            SceneManager.activeSceneChanged += OnActiveSceneChanged;
             BS_Utils.Utilities.BSEvents.menuSceneLoadedFresh += () => BSMLSettings.instance.AddSettingsMenu("JustRainbowLights", "JustRainbowLights.LiteralUI.ToggleInator.bsml", GUIinator.instance);
         }
         
@@ -43,52 +43,18 @@ namespace JustRainbowLights
         {
             literalRainbows = GUIBiologyClass.ModPrefs.GetBool("JustRainbowLights", "literalRainbows", true, false);
 
-            if (nextScene.name == "MenuViewController")
+            if (literalRainbows)
             {
-                BS_Utils.Gameplay.Gamemode.Init();
-            }
-
-            iSeeLight = Resources.FindObjectsOfTypeAll<LightSwitchEventEffect>();
-
-            if (iSeeLight != null)
-            {
-                if(literalRainbows == true)
+                if (nextScene.name == "GameCore")
                 {
-                    
-                    if(gui.ps == Preset.Original)
-                    {
-                        foreach (LightSwitchEventEffect obj in iSeeLight)
-                        {
-                            ReflectionUtil.SetPrivateField(obj, "_lightColor0", randColor);
-                            ReflectionUtil.SetPrivateField(obj, "_lightColor1", randColor);
-                            ReflectionUtil.SetPrivateField(obj, "_highlightColor0", randColor);
-                            ReflectionUtil.SetPrivateField(obj, "_highlightColor1", randColor);
-                        }
-                    }
-
-                    else if(gui.ps == Preset.Warm)
-                    {
-                        foreach(LightSwitchEventEffect obj in iSeeLight)
-                        {
-                            ReflectionUtil.SetPrivateField(obj, "_lightColor0", warmColor);
-                            ReflectionUtil.SetPrivateField(obj, "_lightColor1", warmColor);
-                            ReflectionUtil.SetPrivateField(obj, "_highlightColor0", warmColor);
-                            ReflectionUtil.SetPrivateField(obj, "_highlightColor1", warmColor);
-                        }
-                    }
-
-                    else if(gui.ps == Preset.Cool)
-                    {
-                        foreach (LightSwitchEventEffect obj in iSeeLight)
-                        {
-                            ReflectionUtil.SetPrivateField(obj, "_lightColor0", coolColor);
-                            ReflectionUtil.SetPrivateField(obj, "_lightColor1", coolColor);
-                            ReflectionUtil.SetPrivateField(obj, "_highlightColor0", coolColor);
-                            ReflectionUtil.SetPrivateField(obj, "_highlightColor1", coolColor);
-                        }
-                    }
+                    new GameObject("RainbowReader").AddComponent<MapReader>();
                 }
             }
+        }
+
+        public static bool IsChromaInstalled()
+        {
+            return (IPA.Loader.PluginManager.AllPlugins.Any(x => x.Metadata.Id == "Chroma" || x.Metadata.Id == "ChromaLite"));
         }
 
         #region unused methods

@@ -2,7 +2,7 @@
 
 namespace JustRainbowLights
 {
-    internal class RainbowMaker3000 : SimpleColorSO
+    public class RainbowMaker3000 : SimpleColorSO
     {
         public override Color color
         {
@@ -13,7 +13,7 @@ namespace JustRainbowLights
         }
     }
 
-    internal class WarmthGiver3000 : SimpleColorSO
+    public class WarmthGiver3000 : SimpleColorSO
     {
         public override Color color
         {
@@ -24,7 +24,7 @@ namespace JustRainbowLights
         }
     }
 
-    internal class MinecraftIceBlock : SimpleColorSO
+    public class MinecraftIceBlock : SimpleColorSO
     {
         public override Color color
         {
