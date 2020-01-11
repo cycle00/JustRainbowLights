@@ -4,12 +4,14 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using static JustRainbowLights.Plugin;
+using static JustRainbowLights.LiteralUI.GUIBiologyClass;
 
 namespace JustRainbowLights
 {
     internal class MapReader : MonoBehaviour
     {
         internal static GUIinator gui = GUIinator.instance;
+        internal static bool chromaDisable = ModPrefs.GetBool("JustRainbowLights", "ChromaDisable", false, false);
 
         private void Start()
         {
@@ -19,46 +21,52 @@ namespace JustRainbowLights
         private IEnumerator ReadEvents()
         {
             yield return new WaitForSeconds(0f);
-
-            if (IsChromaActive() && IsChromaInstalled())
-            {
-                Logger.log.Info("Chroma detected, disabling...");
-                yield break;
-            }
-
             LightSwitchEventEffect[] iSeeLight = Resources.FindObjectsOfTypeAll<LightSwitchEventEffect>();
             if (iSeeLight == null) yield break;
 
-            if (gui.ps == Preset.Original)
+            if (chromaDisable)
             {
-                foreach (LightSwitchEventEffect obj in iSeeLight)
+                if (IsChromaActive() && IsChromaInstalled())
                 {
-                    ReflectionUtil.SetPrivateField(obj, "_lightColor0", randColor);
-                    ReflectionUtil.SetPrivateField(obj, "_lightColor1", randColor);
-                    ReflectionUtil.SetPrivateField(obj, "_highlightColor0", randColor);
-                    ReflectionUtil.SetPrivateField(obj, "_highlightColor1", randColor);
+                    Logger.log.Info("Chroma detected, disabling...");
+                    yield break;
                 }
             }
-            else if (gui.ps == Preset.Warm)
+
+            else
             {
-                foreach (LightSwitchEventEffect obj in iSeeLight)
+                if (gui.ps == Preset.Original)
                 {
-                    ReflectionUtil.SetPrivateField(obj, "_lightColor0", warmColor);
-                    ReflectionUtil.SetPrivateField(obj, "_lightColor1", warmColor);
-                    ReflectionUtil.SetPrivateField(obj, "_highlightColor0", warmColor);
-                    ReflectionUtil.SetPrivateField(obj, "_highlightColor1", warmColor);
+                    foreach (LightSwitchEventEffect obj in iSeeLight)
+                    {
+                        ReflectionUtil.SetPrivateField(obj, "_lightColor0", randColor);
+                        ReflectionUtil.SetPrivateField(obj, "_lightColor1", randColor);
+                        ReflectionUtil.SetPrivateField(obj, "_highlightColor0", randColor);
+                        ReflectionUtil.SetPrivateField(obj, "_highlightColor1", randColor);
+                    }
+                }
+                else if (gui.ps == Preset.Warm)
+                {
+                    foreach (LightSwitchEventEffect obj in iSeeLight)
+                    {
+                        ReflectionUtil.SetPrivateField(obj, "_lightColor0", warmColor);
+                        ReflectionUtil.SetPrivateField(obj, "_lightColor1", warmColor);
+                        ReflectionUtil.SetPrivateField(obj, "_highlightColor0", warmColor);
+                        ReflectionUtil.SetPrivateField(obj, "_highlightColor1", warmColor);
+                    }
+                }
+                else if (gui.ps == Preset.Cool)
+                {
+                    foreach (LightSwitchEventEffect obj in iSeeLight)
+                    {
+                        ReflectionUtil.SetPrivateField(obj, "_lightColor0", coolColor);
+                        ReflectionUtil.SetPrivateField(obj, "_lightColor1", coolColor);
+                        ReflectionUtil.SetPrivateField(obj, "_highlightColor0", coolColor);
+                        ReflectionUtil.SetPrivateField(obj, "_highlightColor1", coolColor);
+                    }
                 }
             }
-            else if (gui.ps == Preset.Cool)
-            {
-                foreach (LightSwitchEventEffect obj in iSeeLight)
-                {
-                    ReflectionUtil.SetPrivateField(obj, "_lightColor0", coolColor);
-                    ReflectionUtil.SetPrivateField(obj, "_lightColor1", coolColor);
-                    ReflectionUtil.SetPrivateField(obj, "_highlightColor0", coolColor);
-                    ReflectionUtil.SetPrivateField(obj, "_highlightColor1", coolColor);
-                }
-            }
+        
         }
 
         public bool IsChromaActive()

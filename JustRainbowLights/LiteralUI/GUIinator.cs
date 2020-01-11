@@ -20,6 +20,17 @@ namespace JustRainbowLights.LiteralUI
             }
         }
 
+        [UIValue("chromaDisable")]
+        public bool ChromaDisable
+        {
+            get => ModPrefs.GetBool("JustRainbowLights", "ChromaDisable", false, false);
+            set
+            {
+                MapReader.chromaDisable = value;
+                ModPrefs.SetBool("JustRainbowLights", "ChromaDisable", value);
+            }
+        }
+
         [UIValue("presets")]
         private List<object> presets = (new object[] { Preset.Original, Preset.Warm, Preset.Cool}).ToList();
 

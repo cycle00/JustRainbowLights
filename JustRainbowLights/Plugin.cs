@@ -18,7 +18,6 @@ namespace JustRainbowLights
         public static MinecraftIceBlock coolColor;
         public static LightSwitchEventEffect[] iSeeLight;
         internal static bool literalRainbows;
-        private static GUIinator gui;
 
         public void Init(object thisWillBeNull, IPALogger logger)
         {
@@ -30,7 +29,6 @@ namespace JustRainbowLights
             randColor = ScriptableObject.CreateInstance<RainbowMaker3000>();
             warmColor = ScriptableObject.CreateInstance<WarmthGiver3000>();
             coolColor = ScriptableObject.CreateInstance<MinecraftIceBlock>();
-            gui = new GameObject().AddComponent<GUIinator>();
             BS_Utils.Utilities.BSEvents.menuSceneLoadedFresh += () => BSMLSettings.instance.AddSettingsMenu("JustRainbowLights", "JustRainbowLights.LiteralUI.ToggleInator.bsml", GUIinator.instance);
         }
         
