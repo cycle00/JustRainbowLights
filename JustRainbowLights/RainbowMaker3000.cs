@@ -34,4 +34,26 @@ namespace JustRainbowLights
             }
         }
     }
+
+    public class PastelPainting : SimpleColorSO
+    {
+        public override Color color
+        {
+            get
+            {
+                return new Color(Random.Range(0.6f, 1f), Random.Range(0.6f, 1f), Random.Range(0.6f, 1f), Random.Range(0.65f, 0.82f));
+            }
+        }
+    }
+
+    public class DarknessInside : SimpleColorSO
+    {
+        public override Color color
+        {
+            get
+            {
+                return new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0.1f, 0.2f));
+            }
+        }
+    }
 }

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using BS_Utils.Utilities;
+
 using static JustRainbowLights.LiteralUI.GUIBiologyClass;
 
 namespace JustRainbowLights.LiteralUI
@@ -20,19 +20,8 @@ namespace JustRainbowLights.LiteralUI
             }
         }
 
-        [UIValue("chromaDisable")]
-        public bool ChromaDisable
-        {
-            get => ModPrefs.GetBool("JustRainbowLights", "ChromaDisable", false, false);
-            set
-            {
-                MapReader.chromaDisable = value;
-                ModPrefs.SetBool("JustRainbowLights", "ChromaDisable", value);
-            }
-        }
-
         [UIValue("presets")]
-        private List<object> presets = (new object[] { Preset.Original, Preset.Warm, Preset.Cool}).ToList();
+        private List<object> presets = (new object[] { Preset.Original, Preset.Warm, Preset.Cool, Preset.Pastel, Preset.Dark}).ToList();
 
         public Preset ps;
         [UIValue("rp")]
@@ -48,7 +37,6 @@ namespace JustRainbowLights.LiteralUI
 
         void Awake()
         {
-            ModPrefs = new Config("JustRainbowLights/JustRainbowLights");
             if (Enum.TryParse(ModPrefs.GetString("JustRainbowLights", "Preset", "Original"), out Preset parsedPreset))
                 ps = parsedPreset;
             else

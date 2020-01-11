@@ -16,6 +16,8 @@ namespace JustRainbowLights
         public static RainbowMaker3000 randColor;
         public static WarmthGiver3000 warmColor;
         public static MinecraftIceBlock coolColor;
+        public static PastelPainting pastelColor;
+        public static DarknessInside darkColor;
         public static LightSwitchEventEffect[] iSeeLight;
         internal static bool literalRainbows;
 
@@ -29,6 +31,8 @@ namespace JustRainbowLights
             randColor = ScriptableObject.CreateInstance<RainbowMaker3000>();
             warmColor = ScriptableObject.CreateInstance<WarmthGiver3000>();
             coolColor = ScriptableObject.CreateInstance<MinecraftIceBlock>();
+            pastelColor = ScriptableObject.CreateInstance<PastelPainting>();
+            darkColor = ScriptableObject.CreateInstance<DarknessInside>();
             BS_Utils.Utilities.BSEvents.menuSceneLoadedFresh += () => BSMLSettings.instance.AddSettingsMenu("JustRainbowLights", "JustRainbowLights.LiteralUI.ToggleInator.bsml", GUIinator.instance);
         }
         
