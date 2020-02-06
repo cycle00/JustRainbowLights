@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using static JustRainbowLights.LiteralUI.GUIBiologyClass;
 
 namespace JustRainbowLights.LiteralUI
@@ -35,6 +34,17 @@ namespace JustRainbowLights.LiteralUI
             }
         }
 
+        [UIValue("ccdisable")]
+        public bool CustomColorsDisable
+        {
+            get => ModPrefs.GetBool("JustRainbowLights", "Custom Colours Disable", false, false);
+            set
+            {
+                Plugin.ccdisable = value;
+                ModPrefs.SetBool("JustRainbowLights", "Custom Colours Disable", value);
+            }
+        }
+
         void Awake()
         {
             if (Enum.TryParse(ModPrefs.GetString("JustRainbowLights", "Preset", "Original"), out Preset parsedPreset))
@@ -44,3 +54,11 @@ namespace JustRainbowLights.LiteralUI
         }
     }
 }
+/*
+ * A MAN HAS FALLEN INTO THE RIVER IN LEGO CITY
+ * START THE RESCUE HELICOPTER
+ * HEY!
+ * BUILD THE HELICOPTER AND OFF TO THE RESCUE
+ * PREPARE THE LIFELINE, LOWER THE STRETCHER AND MAKE THE RESCUE
+ * THE NEW EMERGENCY COLLECTION FROM LEGO CITY
+ */

@@ -54,6 +54,9 @@
     <Reference Include="MainAssembly">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\MainAssembly.dll</HintPath>
     </Reference>
+    <Reference Include="SongCore">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Beat Saber\Plugins\SongCore.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -92,6 +95,7 @@
   <ItemGroup>
     <Compile Include="LiteralUI\GUIBiologyClass.cs" />
     <Compile Include="LiteralUI\GUIinator.cs" />
+    <Compile Include="MapColourReader.cs" />
     <Compile Include="MapReader.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Logger.cs" />

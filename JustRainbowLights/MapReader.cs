@@ -10,10 +10,12 @@ namespace JustRainbowLights
     internal class MapReader : MonoBehaviour
     {
         internal static GUIinator gui = GUIinator.instance;
+        private MapColourReader mcr;
 
         private void Start()
         {
             StartCoroutine(ReadEvents());
+            mcr = new GameObject().AddComponent<MapColourReader>();
         }
 
         private IEnumerator ReadEvents()
@@ -28,6 +30,7 @@ namespace JustRainbowLights
         
             LightSwitchEventEffect[] iSeeLight = Resources.FindObjectsOfTypeAll<LightSwitchEventEffect>();
             if (iSeeLight == null) yield break;
+            if (mcr.hasCustomLights) yield break;
 
             if (gui.ps == Preset.Original)
             {
@@ -97,3 +100,4 @@ namespace JustRainbowLights
         }
     }
 }
+//START THE RESCUE HELICOPTER

@@ -20,6 +20,7 @@ namespace JustRainbowLights
         public static DarknessInside darkColor;
         public static LightSwitchEventEffect[] iSeeLight;
         internal static bool literalRainbows;
+        internal static bool ccdisable;
 
         public void Init(object thisWillBeNull, IPALogger logger)
         {
@@ -44,12 +45,19 @@ namespace JustRainbowLights
         public void OnActiveSceneChanged(Scene prevScene, Scene nextScene)
         {
             literalRainbows = GUIBiologyClass.ModPrefs.GetBool("JustRainbowLights", "literalRainbows", true, false);
+            ccdisable = GUIBiologyClass.ModPrefs.GetBool("JustRainbowLights", "Custom Colours Disable", false, false);
 
             if (literalRainbows)
             {
                 if (nextScene.name == "GameCore")
                 {
+                    //A MAN HAS FALLEN INTO THE RIVER IN LEGO CITY
                     new GameObject("RainbowReader").AddComponent<MapReader>();
+                    if (ccdisable)
+                    {
+                        new GameObject("CustomColorReader").AddComponent<MapColourReader>();
+                    }
+                    //HEY!
                 }
             }
         }
