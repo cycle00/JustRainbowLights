@@ -37,6 +37,10 @@ namespace JustRainbowLights
                     hasCustomLights = true;
                 }
             }
+            if (RetrieveExtraSongData(cpbl.levelID.Substring(13))._customEnvironmentHash != null)
+            {
+                hasCustomLights = true;
+            }
         }
     }
 }
