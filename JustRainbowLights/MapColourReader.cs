@@ -18,28 +18,31 @@ namespace JustRainbowLights
             hasCustomLights = false;
             cpbl = LevelData.GameplayCoreSceneSetupData.difficultyBeatmap.level as CustomPreviewBeatmapLevel;
             
-            foreach (var i in RetrieveExtraSongData(cpbl.levelID.Substring(13))._difficulties)
+            if (cpbl != null)
             {
-                if (i._colorLeft != null)
+                foreach (var i in RetrieveExtraSongData(cpbl.levelID.Substring(13))._difficulties)
+                {
+                    if (i._colorLeft != null)
+                    {
+                        hasCustomLights = true;
+                    }
+                    if (i._colorRight != null)
+                    {
+                        hasCustomLights = true;
+                    }
+                    if (i._envColorLeft != null)
+                    {
+                        hasCustomLights = true;
+                    }
+                    if (i._envColorRight != null)
+                    {
+                        hasCustomLights = true;
+                    }
+                }
+                if (RetrieveExtraSongData(cpbl.levelID.Substring(13))._customEnvironmentHash != null)
                 {
                     hasCustomLights = true;
                 }
-                if (i._colorRight != null)
-                {
-                    hasCustomLights = true;
-                }
-                if (i._envColorLeft != null)
-                {
-                    hasCustomLights = true;
-                }
-                if (i._envColorRight != null)
-                {
-                    hasCustomLights = true;
-                }
-            }
-            if (RetrieveExtraSongData(cpbl.levelID.Substring(13))._customEnvironmentHash != null)
-            {
-                hasCustomLights = true;
             }
         }
     }
