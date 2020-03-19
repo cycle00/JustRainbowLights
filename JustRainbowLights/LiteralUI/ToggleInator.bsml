@@ -1,5 +1,4 @@
 ﻿<settings-container>
 	<checkbox-setting text='Rainbow Lights' value='rainbow' hover-hint='Toggle the background rainbow lights'></checkbox-setting>
-  <checkbox-setting text='Disable When Custom Colors' value='ccdisable' hover-hint='Disables rainbow lighting when the map has custom colors'></checkbox-setting>
 	<dropdown-list-setting text='Rainbow Preset' value='rp' options='presets'></dropdown-list-setting>
 </settings-container>
