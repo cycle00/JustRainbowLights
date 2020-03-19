@@ -98,7 +98,6 @@
   <ItemGroup>
     <Compile Include="LiteralUI\GUIBiologyClass.cs" />
     <Compile Include="LiteralUI\GUIinator.cs" />
-    <Compile Include="MapColourReader.cs" />
     <Compile Include="MapReader.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Logger.cs" />

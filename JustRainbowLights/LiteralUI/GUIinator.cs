@@ -34,17 +34,6 @@ namespace JustRainbowLights.LiteralUI
             }
         }
 
-        [UIValue("ccdisable")]
-        public bool CustomColorsDisable
-        {
-            get => ModPrefs.GetBool("JustRainbowLights", "Custom Colours Disable", false, false);
-            set
-            {
-                Plugin.ccdisable = value;
-                ModPrefs.SetBool("JustRainbowLights", "Custom Colours Disable", value);
-            }
-        }
-
         void Awake()
         {
             if (Enum.TryParse(ModPrefs.GetString("JustRainbowLights", "Preset", "Original"), out Preset parsedPreset))
