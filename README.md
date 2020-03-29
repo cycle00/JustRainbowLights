@@ -5,3 +5,7 @@ This mod makes it so the lights in the background of a level appear rainbow, for
 ## If you have sensitive eyes, epilepsy, or a history of seizures **DO NOT** install this mod
 
 ![Preview](JustRainbowLights/Img/RainbowLighting.PNG "Preview")
+
+#### Special Thanks
+
+Special thanks to @Aeroluna and all of the other people who helped me make this mod
