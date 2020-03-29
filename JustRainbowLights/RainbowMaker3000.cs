@@ -2,18 +2,18 @@
 
 namespace JustRainbowLights
 {
-    public class RainbowMaker3000 : SimpleColorSO
+    public class RainbowMaker3000 : ColorSO
     {
         public override Color color
         {
             get
             {
-                return new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(.65f, .82f));
+                return new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0.65f, 0.82f));
             }
         }
     }
 
-    public class WarmthGiver3000 : SimpleColorSO
+    public class WarmthGiver3000 : ColorSO
     {
         public override Color color
         {
@@ -24,7 +24,7 @@ namespace JustRainbowLights
         }
     }
 
-    public class MinecraftIceBlock : SimpleColorSO
+    public class MinecraftIceBlock : ColorSO
     {
         public override Color color
         {
@@ -35,7 +35,7 @@ namespace JustRainbowLights
         }
     }
 
-    public class PastelPainting : SimpleColorSO
+    public class PastelPainting : ColorSO
     {
         public override Color color
         {
@@ -46,7 +46,7 @@ namespace JustRainbowLights
         }
     }
 
-    public class DarknessInside : SimpleColorSO
+    public class DarknessInside : ColorSO
     {
         public override Color color
         {

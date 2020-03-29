@@ -1,18 +1,22 @@
 ﻿using IPA;
 using IPA.Config;
+using IPA.Config.Stores;
+using IPA.Logging;
 using BeatSaberMarkupLanguage.Settings;
 using IPA.Utilities;
 using UnityEngine.SceneManagement;
-using IPALogger = IPA.Logging.Logger;
 using UnityEngine;
-using JustRainbowLights.LiteralUI;
+using JustRainbowLights.Config.LiteralUI;
+using JustRainbowLights.Config;
 using System.Linq;
 using System.Collections;
 
 namespace JustRainbowLights
 {
-    public class Plugin : IBeatSaberPlugin
+    [Plugin(RuntimeOptions.SingleStartInit)]
+    public class Plugin
     {
+        public static IPA.Logging.Logger log { get; private set; }
         public static RainbowMaker3000 randColor;
         public static WarmthGiver3000 warmColor;
         public static MinecraftIceBlock coolColor;
@@ -21,51 +25,45 @@ namespace JustRainbowLights
         public static LightSwitchEventEffect[] iSeeLight;
         internal static bool literalRainbows;
 
-        public void Init(object thisWillBeNull, IPALogger logger)
+        [Init]
+        public Plugin(IPA.Logging.Logger logger, IPA.Config.Config conf)
         {
-            Logger.log = logger;
-        }
-
-        public void OnApplicationStart()
-        {
-            randColor = ScriptableObject.CreateInstance<RainbowMaker3000>();
+            log = logger;
+            randColor = new RainbowMaker3000();
             warmColor = ScriptableObject.CreateInstance<WarmthGiver3000>();
             coolColor = ScriptableObject.CreateInstance<MinecraftIceBlock>();
             pastelColor = ScriptableObject.CreateInstance<PastelPainting>();
             darkColor = ScriptableObject.CreateInstance<DarknessInside>();
-            BS_Utils.Utilities.BSEvents.menuSceneLoadedFresh += () => BSMLSettings.instance.AddSettingsMenu("JustRainbowLights", "JustRainbowLights.LiteralUI.ToggleInator.bsml", GUIinator.instance);
+            PluginConfig.Instance = conf.Generated<PluginConfig>();
+            log.Info("JustRainbowLights has initialized successfully");
+        }
+
+        [OnStart]
+        public void OnStart()
+        {
+            BS_Utils.Utilities.BSEvents.menuSceneLoadedFresh += () => BSMLSettings.instance.AddSettingsMenu("JustRainbowLights", "JustRainbowLights.Config.LiteralUI.ToggleInator.bsml", GUIinator.instance);
+            BS_Utils.Utilities.BSEvents.gameSceneActive += Rainbows;
         }
         
-        public void OnApplicationQuit()
+        [OnExit]
+        public void OnQuit()
         {
-            SceneManager.sceneLoaded -= OnSceneLoaded;
+            BS_Utils.Utilities.BSEvents.gameSceneActive -= Rainbows;
         }
 
-        public void OnActiveSceneChanged(Scene prevScene, Scene nextScene)
+        public void Rainbows()
         {
-            literalRainbows = GUIBiologyClass.ModPrefs.GetBool("JustRainbowLights", "literalRainbows", true, false);
-
-            if (literalRainbows)
+            if (PluginConfig.Instance.Enabled)
             {
-                if (nextScene.name == "GameCore" || nextScene.name == "Tutorial")
-                {
-                    //A MAN HAS FALLEN INTO THE RIVER IN LEGO CITY
-                    new GameObject("RainbowReader").AddComponent<MapReader>();
-                    //HEY!
-                }
+                //A MAN HAS FALLEN INTO THE RIVER IN LEGO CITY
+                new GameObject("RainbowReader").AddComponent<MapReader>();
+                //HEY!
             }
         }
 
         public static bool IsChromaInstalled()
         {
-            return (IPA.Loader.PluginManager.AllPlugins.Any(x => x.Metadata.Id == "Chroma" || x.Metadata.Id == "ChromaLite"));
+            return (IPA.Loader.PluginManager.AllPlugins.Any(x => x.Id == "Chroma" || x.Id == "ChromaLite"));
         }
-
-        #region unused methods
-        public void OnFixedUpdate() { }
-        public void OnUpdate() { }
-        public void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode) { }
-        public void OnSceneUnloaded(Scene scene) { }
-        #endregion
     }
 }
