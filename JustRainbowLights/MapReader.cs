@@ -20,7 +20,7 @@ namespace JustRainbowLights
         {
             yield return new WaitUntil(() => Resources.FindObjectsOfTypeAll<LightSwitchEventEffect>().Any());
             
-            if (IsChromaActive() && IsChromaInstalled())
+            if (IsChromaInstalled() && IsChromaActive())
             {
                 log.Info("Chroma detected, disabling...");
                 yield break;
@@ -92,16 +92,10 @@ namespace JustRainbowLights
         public bool IsChromaActive()
         {
             BeatmapObjectCallbackController s = Resources.FindObjectsOfTypeAll<BeatmapObjectCallbackController>().FirstOrDefault();
-            if (s == null) return false;
-            BeatmapData _beatmapData = ReflectionUtil.GetField<BeatmapData, BeatmapObjectCallbackController>(s, "_beatmapData");
-            if (_beatmapData == null) return false;
-            BeatmapEventData[] bevData = _beatmapData.beatmapEventData;
-            for (int i = bevData.Length - 1; i >= 0; i--)
-            {
-                if (bevData[i].value >= 2000000000) return true;
-            }
-
-            return false;
+            BeatmapData _beatmapData = s?.GetField<BeatmapData, BeatmapObjectCallbackController>("_beatmapData");
+            var beatmap = SongCore.Collections.RetrieveDifficultyData(BS_Utils.Plugin.LevelData.GameplayCoreSceneSetupData.difficultyBeatmap).additionalDifficultyData;
+            return beatmap._requirements.Contains("Chroma") || beatmap._suggestions.Contains("Chroma")
+                || (_beatmapData?.beatmapEventData?.Any(n => n.value >= 2000000000) ?? false);
         }
     }
 }
