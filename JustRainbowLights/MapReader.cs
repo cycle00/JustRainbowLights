@@ -1,16 +1,15 @@
 ﻿using IPA.Utilities;
-using JustRainbowLights.Config.LiteralUI;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using JustRainbowLights.Config;
 using static JustRainbowLights.Plugin;
 
 namespace JustRainbowLights
 {
     internal class MapReader : MonoBehaviour
     {
-        internal static GUIinator gui = GUIinator.instance;
-
+        private string ps = PluginConfig.Instance.Preset;
         private void Start()
         {
             StartCoroutine(ReadEvents());
@@ -25,15 +24,11 @@ namespace JustRainbowLights
                 log.Info("Chroma detected, disabling...");
                 yield break;
             }
-        
+
             LightSwitchEventEffect[] iSeeLight = Resources.FindObjectsOfTypeAll<LightSwitchEventEffect>();
-
-            iSeeLight.ToList().ForEach(i => log.Debug(i.ToString()));
-            log.Debug(iSeeLight.Count().ToString());
-
             if (iSeeLight == null) yield break;
             
-            if (gui.ps == Preset.Original)
+            if (ps == "Original")
             {
                 foreach (LightSwitchEventEffect obj in iSeeLight)
                 {
@@ -44,7 +39,7 @@ namespace JustRainbowLights
                 }
             }
 
-            else if (gui.ps == Preset.Warm)
+            else if (ps == "Warm")
             {
                 foreach (LightSwitchEventEffect obj in iSeeLight)
                 {
@@ -55,7 +50,7 @@ namespace JustRainbowLights
                 }
             }
 
-            else if (gui.ps == Preset.Cool)
+            else if (ps == "Cool")
             {
                 foreach (LightSwitchEventEffect obj in iSeeLight)
                 {
@@ -66,7 +61,7 @@ namespace JustRainbowLights
                 }
             }
 
-            else if(gui.ps == Preset.Pastel)
+            else if(ps == "Pastel")
             {
                 foreach (LightSwitchEventEffect obj in iSeeLight)
                 {
@@ -77,7 +72,7 @@ namespace JustRainbowLights
                 }
             }
 
-            else if(gui.ps == Preset.Dark)
+            else if(ps == "Dark")
             {
                 foreach (LightSwitchEventEffect obj in iSeeLight)
                 {

@@ -79,6 +79,10 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
     </Reference>
@@ -99,22 +103,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\LiteralUI\GUIinator.cs" />
-    <Compile Include="Config\LiteralUI\PresetEnum.cs" />
+    <Compile Include="Config\LiteralUI\RainbowsDescriptionViewController.cs" />
+    <Compile Include="Config\LiteralUI\RainbowsFlowCoordinator.cs" />
+    <Compile Include="Config\LiteralUI\RainbowsListViewController.cs" />
+    <Compile Include="Config\LiteralUI\SettingsUI.cs" />
+    <Compile Include="Config\PresetEnum.cs" />
     <Compile Include="Config\PluginConfig.cs" />
     <Compile Include="MapReader.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RainbowMaker3000.cs" />
+    <Compile Include="RainbowConst\RainbowDescriptor.cs" />
+    <Compile Include="RainbowConst\RainbowMaker3000.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="manifest.json" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Config\LiteralUI\ToggleInator.bsml" />
+    <EmbeddedResource Include="Config\LiteralUI\Views\RainbowsList.bsml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Img\raiinbow.png" />
+    <EmbeddedResource Include="Img\cold.png" />
+    <EmbeddedResource Include="Img\dark.png" />
+    <EmbeddedResource Include="Img\pastel.png" />
+    <EmbeddedResource Include="Img\raiinbow.png" />
+    <EmbeddedResource Include="Img\warm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Config\LiteralUI\Views\RainbowsMore.bsml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
