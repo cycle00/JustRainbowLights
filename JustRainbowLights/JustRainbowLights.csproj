@@ -105,6 +105,7 @@
   <ItemGroup>
     <Compile Include="Config\LiteralUI\RainbowsDescriptionViewController.cs" />
     <Compile Include="Config\LiteralUI\RainbowsFlowCoordinator.cs" />
+    <Compile Include="Config\LiteralUI\RainbowsInModifiers.cs" />
     <Compile Include="Config\LiteralUI\RainbowsListViewController.cs" />
     <Compile Include="Config\LiteralUI\SettingsUI.cs" />
     <Compile Include="Config\PresetEnum.cs" />
@@ -130,6 +131,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Config\LiteralUI\Views\RainbowsMore.bsml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Config\LiteralUI\Views\RainbowsModifiers.bsml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Img\RainbowModifier.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -44,6 +44,7 @@ namespace JustRainbowLights
         public void OnStart()
         {
             BS_Utils.Utilities.BSEvents.gameSceneActive += Rainbows;
+            BeatSaberMarkupLanguage.GameplaySetup.GameplaySetup.instance.AddTab("JustRainbowLights", "JustRainbowLights.Config.LiteralUI.Views.RainbowsModifiers.bsml", RainbowsInModifiers.instance);
         }
         
         [OnExit]
