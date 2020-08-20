@@ -1,0 +1,40 @@
+﻿<bg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd">
+  <vertical>
+    <horizontal bg="panel-top" pad-left="10" pad-right="10" horizontal-fit="PreferredSize">
+      <text text="Preset Editor" align="Center" font-size="10"/>
+    </horizontal>
+    <!-- Create and delete buttons + name -->
+    <horizontal horizontal-fit="PreferredSize" vertical-fit="PreferredSize" spacing="2" anchor-min-x="0" anchor-max-x="0.5">
+      <icon-button pad="4" pref-height="5" pref-width="5" click-event="openNameKeyboard" hover-hint="Create a new preset" icon="JustRainbowLights.Img.create.png" />
+      <icon-button pad="4" pref-height="5" pref-width="5" on-click="deletePreset" hover-hint="Delete selected preset" icon="JustRainbowLights.Img.delete.png" />
+      <modal-keyboard id="setName" value="nameValue" show-event="openNameKeyboard" hide-event="closeNameKeyboard,closeAllModals" clear-on-open="true" on-enter="nameIsSet" />
+    </horizontal>
+    <horizontal horizontal-fit="PreferredSize" vertical-fit="PreferredSize" pad-left="2">
+      <button text="Name" hover-hint="Sets the name of the preset" click-event="openNameKeyboard" />
+    </horizontal>
+    <!-- Colours -->
+    <horizontal horizontal-fit="PreferredSize" vertical-fit="PreferredSize" pad-left="2">
+      <button text="Colour 1" hover-hint="Select the first colour" click-event="openColourPicker1" />
+      <modal-color-picker id="setColour1" value="colour1Value" show-event="openColourPicker1" hide-event="closeColourPicker1,closeAllModals" on-done="colour1IsSet" />
+    </horizontal>
+    <horizontal horizontal-fit="PreferredSize" vertical-fit="PreferredSize" pad-left="2">
+      <button text="Colour 2" hover-hint="Select the second colour" click-event="openColourPicker2" />
+      <modal-color-picker id="setColour2" value="colour2Value" show-event="openColourPicker2" hide-event="closeColourPicker2,closeAllModals" on-done="colour1IsSet" />
+    </horizontal>
+    <horizontal pad-left="2" horizontal-fit="PreferredSize" vertical-fit="PreferredSize">
+      <slider-setting text="1st Alpha Value" min="0" max="5" apply-on-change="true" value="alphaSlider1" />
+    </horizontal>
+    <horizontal pad-left="2" horizontal-fit="PreferredSize" vertical-fit="PreferredSize">
+      <slider-setting text="2nd Alpha Value" min="0" max="5" apply-on-change="true" value="alphaSlider2" />
+    </horizontal>
+    <!-- Description And Image Select -->
+    <horizontal horizontal-fit="PreferredSize" vertical-fit="PreferredSize" pad-left="2">
+      <button text="Description" hover-hint="Set the description of the current preset" click-event="openDescriptionKeyboard" />
+      <modal-keyboard id="setDescription" value="descriptionValue" show-event="openDescriptionKeyboard" hide-event="closeDesriptionKeyboard,closeAllModals" clear-on-open="true" on-enter="descriptionIsSet" />
+    </horizontal>
+    <horizontal pad-left="2" horizontal-fit="PreferredSize" vertical-fit="PreferredSize">
+      <dropdown-list-setting apply-on-change="true" options="images" value="image" text="Icon" />
+      <img preserve-aspect="true" pref-height="5.25" pref-width="5.25" id="presetPreview" />
+    </horizontal>
+  </vertical>
+</bg>

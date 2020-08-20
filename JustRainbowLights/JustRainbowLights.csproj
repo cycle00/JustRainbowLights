@@ -53,6 +53,9 @@
     <Reference Include="HMUI">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\HMUI.dll</HintPath>
     </Reference>
+    <Reference Include="INIFileParser.2.5.2.0">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Beat Saber\Libs\INIFileParser.2.5.2.0.dll</HintPath>
+    </Reference>
     <Reference Include="IPA.Loader, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\IPA.Loader.dll</HintPath>
@@ -103,41 +106,50 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\LiteralUI\RainbowsDescriptionViewController.cs" />
-    <Compile Include="Config\LiteralUI\RainbowsFlowCoordinator.cs" />
-    <Compile Include="Config\LiteralUI\RainbowsInModifiers.cs" />
-    <Compile Include="Config\LiteralUI\RainbowsListViewController.cs" />
-    <Compile Include="Config\LiteralUI\SettingsUI.cs" />
-    <Compile Include="Config\PresetEnum.cs" />
-    <Compile Include="Config\PluginConfig.cs" />
-    <Compile Include="MapReader.cs" />
+    <Compile Include="Data\CustomPreset.cs" />
+    <Compile Include="Data\Descriptor.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RainbowConst\RainbowDescriptor.cs" />
-    <Compile Include="RainbowConst\RainbowMaker3000.cs" />
+    <Compile Include="Settings\Configuration.cs" />
+    <Compile Include="Settings\UI\ViewControllers\PresetListViewController.cs" />
+    <Compile Include="Settings\UI\ViewControllers\PresetModifier.cs" />
+    <Compile Include="Settings\Utilities\PluginConfig.cs" />
+    <Compile Include="Utilities\PresetLoader.cs" />
+    <Compile Include="Utilities\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="manifest.json" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Config\LiteralUI\Views\RainbowsList.bsml" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Img\cold.png" />
     <EmbeddedResource Include="Img\dark.png" />
     <EmbeddedResource Include="Img\pastel.png" />
-    <EmbeddedResource Include="Img\raiinbow.png" />
+    <EmbeddedResource Include="Img\original.png" />
     <EmbeddedResource Include="Img\warm.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Config\LiteralUI\Views\RainbowsMore.bsml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Config\LiteralUI\Views\RainbowsModifiers.bsml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Img\RainbowModifier.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\Rainbows\Original.ini" />
+    <EmbeddedResource Include="Data\Rainbows\Warm.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Rainbows\Cool.ini" />
+    <None Include="Data\Rainbows\Dark.ini" />
+    <None Include="Data\Rainbows\Pastel.ini" />
+    <EmbeddedResource Include="Settings\UI\Views\PresetList.bsml" />
+    <EmbeddedResource Include="Settings\UI\Views\PresetDescription.bsml" />
+    <EmbeddedResource Include="Settings\UI\Views\PresetCreate.bsml" />
+    <None Include="Settings\UI\Views\PresetsModifier.bsml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Img\create.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Img\delete.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /Y "$(TargetDir)$(TargetName).dll" "C:\Program Files (x86)\Steam\steamapps\common\Beat Saber\Plugins\$(TargetName).dll"</PostBuildEvent>
