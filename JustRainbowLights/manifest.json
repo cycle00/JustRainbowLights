@@ -1,8 +1,8 @@
 ﻿{
   "$schema": "https://raw.githubusercontent.com/nike4613/ModSaber-MetadataFileSchema/master/Schema.json",
   "author": "CycleWeeb",
-  "description": "Just rainbow lights ripped directly from my other mod that makes EVERYTHING rainbow",
-  "gameVersion": "1.8.0",
+  "description": "The name says it all",
+  "gameVersion": "1.11.0",
   "id": "JustRainbowLights",
   "name": "JustRainbowLights",
   "version": "1.7.5",
