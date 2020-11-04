@@ -3,7 +3,7 @@ using IPA.Config.Stores;
 
 [assembly: InternalsVisibleTo(GeneratedStore.AssemblyVisibilityTarget)]
 
-namespace JustRainbowLights.Config
+namespace JustRainbowLights.Settings.Utilities
 {
     internal class PluginConfig
     {
@@ -12,5 +12,3 @@ namespace JustRainbowLights.Config
         public string Preset = "Original";
     }
 }
-
-//THE NEW EMERGENCY COLLECTION FROM LEGO CITY
