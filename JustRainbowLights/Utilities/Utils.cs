@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Text;
+using Newtonsoft.Json;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
@@ -60,6 +63,43 @@ namespace JustRainbowLights.Utilities
         }
 
         /// <summary>
+        /// Parses json data from a string to a String, Object dictionary
+        /// </summary>
+        /// <param name="data">Raw unparsed json data</param>
+        public static Dictionary<string, object> ParseJsonFromString(string data)
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject<Dictionary<string, object>>(data);
+            }
+
+            catch (Exception e)
+            {
+                Plugin.log.Warn($"Could not parse json data. Are you sure the data is json? Exception:\n{e}");
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Parses json data from a byte array to a String, Object dictionary (useful for embedded resources)
+        /// </summary>
+        /// <param name="data">Raw byte data of the json file</param>
+        public static Dictionary<string, object> ParseJsonFromByteArray(byte[] data)
+        {
+            try
+            {
+                string jsonData = Encoding.UTF8.GetString(data);
+                return JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonData);
+            } 
+            
+            catch (Exception e)
+            {
+                Plugin.log.Warn($"Could not parse json data. Are you sure the data is json? Exception:\n{e}");
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Loads an embedded resource from an assembly
         /// </summary>
         /// <param name="assembly">Assembly to load from</param>
@@ -96,7 +136,7 @@ namespace JustRainbowLights.Utilities
             {
                 try
                 {
-                    byte[] resource = LoadFromResource($"JustRainbowLights.Resources.raiinbow.png");
+                    byte[] resource = LoadFromResource($"JustRainbowLights.Resources.default.png");
                     defaultIcon = LoadTextureRaw(resource);
                 }
                 catch { }

@@ -6,6 +6,7 @@ using IPA.Config;
 using UnityEngine;
 using System.Linq;
 using System.Reflection;
+using System.Collections.Generic;
 using System.IO;
 
 namespace JustRainbowLights
@@ -38,7 +39,7 @@ namespace JustRainbowLights
         [OnStart]
         public void OnStart()
         {
-        
+            
         }
         
         [OnExit]

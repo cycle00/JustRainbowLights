@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using JustRainbowLights.Utilities;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace JustRainbowLights.Data
 {
@@ -19,6 +21,23 @@ namespace JustRainbowLights.Data
             Icon = icon;
 
             Color1 = color1;
+            Color2 = color2;
+        }
+
+        public Preset(Dictionary<string, object> jsonData)
+        {
+            Name = jsonData["name"].ToString();
+            Description = jsonData["description"].ToString();
+
+            byte[] iconData = Utils.LoadFromResource($"JustRainbowLights.Resources.Images.{jsonData["icon"].ToString()}.png");
+            Icon = Utils.LoadTextureRaw(iconData);
+
+            Dictionary<string, object> c1Dic = Utils.ParseJsonFromString(jsonData["color1"].ToString());
+            Color color1 = new Color((float)c1Dic["r"], (float)c1Dic["g"], (float)c1Dic["b"], (float)c1Dic["a"]);
+            Color1 = color1;
+
+            Dictionary<string, object> c2Dic = Utils.ParseJsonFromString(jsonData["color2"].ToString());
+            Color color2 = new Color((float)c2Dic["r"], (float)c2Dic["g"], (float)c2Dic["b"], (float)c2Dic["a"]);
             Color2 = color2;
         }
 
