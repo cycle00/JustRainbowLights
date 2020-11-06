@@ -1,4 +1,6 @@
-﻿using JustRainbowLights.Settings;
+﻿using JustRainbowLights.Data;
+using JustRainbowLights.Settings;
+using JustRainbowLights.Utilities;
 using IPA;
 using IPA.Loader;
 using IPA.Utilities;
@@ -19,7 +21,7 @@ namespace JustRainbowLights
         public static string PluginPath => Path.Combine(UnityGame.InstallPath, "UserData", "JustRainbowLights");
         
         [Init]
-        public Plugin(IPA.Logging.Logger logger, Config config, PluginMetadata metadata)
+        public void Init(IPA.Logging.Logger logger, Config config, PluginMetadata metadata)
         {
             log = logger;
             Configuration.Init(config);
@@ -36,28 +38,45 @@ namespace JustRainbowLights
         [OnDisable]
         public void OnDisable() => Unload();
 
-        [OnStart]
-        public void OnStart()
+        private void OnGameSceneLoaded()
         {
-            
-        }
-        
-        [OnExit]
-        public void OnQuit()
-        {
-
+            if (Configuration.Enable)
+            {
+                new GameObject("MapReader").AddComponent<MapReader>();
+            }
         }
 
         private void Load()
         {
             Configuration.Load();
+            PresetLoader.Load();
+            AddEvents();
 
-            log.Info($"JustRainbowLights v.{PluginVersion} has successfully loaded");
+            log.Info($"JustRainbowLights v.{PluginVersion} has successfully started");
         }
 
         private void Unload()
         {
+            RemoveEvents();
             Configuration.Save();
+            PresetLoader.Clear();
+
+        }
+
+        private void AddEvents()
+        {
+            RemoveEvents();
+            BS_Utils.Utilities.BSEvents.gameSceneLoaded += OnGameSceneLoaded;
+        }
+
+        private void RemoveEvents()
+        {
+            BS_Utils.Utilities.BSEvents.gameSceneLoaded -= OnGameSceneLoaded;
+        }
+
+        public static bool IsChromaInstalled()
+        {
+            return PluginManager.EnabledPlugins.Any(x => x.Id == "Chroma" || x.Id == "ChromaLite");
         }
     }
 }
