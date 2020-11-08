@@ -2,6 +2,7 @@
 using JustRainbowLights.Settings;
 using System;
 using System.IO;
+using System.Security.AccessControl;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,8 +12,8 @@ namespace JustRainbowLights.Utilities
     {
         public static bool IsLoaded { get; private set; }
         public static int SelectedPreset { get; internal set; } = 0;
-        public static IList<Preset> Presets { get; private set; }
-        public static IEnumerable<string> PresetFiles { get; private set; }
+        public static IList<Preset> Presets { get; private set; } = new List<Preset>();
+        public static IEnumerable<string> PresetFiles { get; private set; } = Enumerable.Empty<string>();
 
         internal static void Load()
         {
@@ -23,6 +24,21 @@ namespace JustRainbowLights.Utilities
                 {
                     Directory.CreateDirectory(path);
                 }
+
+                IEnumerable<string> embeddedPresets = new List<string>
+                {
+                    "original.json",
+                    "cold.json",
+                    "warm.json",
+                    "dark.json",
+                    "pastel.json",
+                };
+
+                foreach (string embeddedPreset in embeddedPresets)
+                {
+                    LoadEmbeddedPreset(embeddedPreset);
+                }
+
                 IEnumerable<string> filter = new List<string> { "*.json" };
                 PresetFiles = Utils.GetFileNames(path, filter, SearchOption.AllDirectories, true);
                 Plugin.log.Info($"{PresetFiles.Count()} preset file(s) found.");
@@ -56,12 +72,7 @@ namespace JustRainbowLights.Utilities
 
         internal static void Clear()
         {
-            int presetCount = Presets.Count;
-            for (int i = 0; i < presetCount; i++)
-            {
-                Presets[i] = null;
-            }
-
+            Presets.Clear();
             IsLoaded = false;
             SelectedPreset = 0;
             Presets = new List<Preset>();
@@ -72,23 +83,15 @@ namespace JustRainbowLights.Utilities
         private static IList<Preset> LoadPresets(IEnumerable<string> fileNames)
         {
             IList<Preset> presets = new List<Preset> { };
-
-            IEnumerable<string> embeddedPresets = new List<string>
-            {
-                "Original.json",
-                "Cold.json",
-                "Warm.json",
-                "Dark.json",
-                "Pastel.json",
-            };
-
+            
             foreach (string presetFile in fileNames)
             {
                 try
                 {
-                    string jsonData = File.ReadAllText(Path.Combine(Plugin.PluginPath, presetFile));
+                    string jsonData = File.ReadAllText(Path.Combine(Plugin.PluginPath, "Presets", presetFile));
                     Dictionary<string, object> parsedJsonData = Utils.ParseJsonFromString(jsonData);
-                    Preset preset = new Preset(parsedJsonData);
+                    Preset preset = UnityEngine.ScriptableObject.CreateInstance<Preset>();
+                    preset.Init(parsedJsonData);
                     if (preset != null)
                     {
                         presets.Add(preset);
@@ -100,34 +103,17 @@ namespace JustRainbowLights.Utilities
                     Plugin.log.Warn(e);
                 }
             }
-            
-            foreach (string embeddedPreset in embeddedPresets)
-            {
-                Preset preset = LoadEmbeddedPreset(embeddedPreset);
-                if (preset != null)
-                {
-                    presets.Add(preset);
-                }
-            }
 
             return presets;
         }
 
-        private static Preset LoadEmbeddedPreset(string fileName)
+        private static void LoadEmbeddedPreset(string fileName)
         {
-            Preset preset = null;
-
-            if (!File.Exists(Path.Combine(Plugin.PluginPath, fileName)))
+            var filePath = Path.Combine(Plugin.PluginPath, "Presets", fileName);
+            if (!File.Exists(filePath))
             {
-                File.WriteAllBytes(Plugin.PluginPath, Utils.LoadFromResource($"JustRainbowLights.Data.DefaultPresets.{fileName}"));
-                string jsonData = File.ReadAllText(Path.Combine(Plugin.PluginPath, fileName));
-                Dictionary<string, object> parsedJsonData = Utils.ParseJsonFromString(jsonData);
-                preset = new Preset(parsedJsonData);
-
-                return preset;
+                File.WriteAllBytes(filePath, Utils.LoadFromResource($"JustRainbowLights.Data.DefaultPresets.{fileName}"));
             }
-
-            return null;
         }
     }
 }

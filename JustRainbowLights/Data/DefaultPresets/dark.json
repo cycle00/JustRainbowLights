@@ -1,0 +1,17 @@
+﻿{
+  "name": "Dark",
+  "description": "The original preset, but very dark. Useful for people sensitive to bright, flashing lights.",
+  "icon": "default.png",
+  "color1": {
+    "r": 0,
+    "g": 0,
+    "b": 0,
+    "a": 0.1
+  },
+  "color2": {
+    "r": 1,
+    "g": 1,
+    "b": 1,
+    "a": 0.2
+  }
+}

@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BeatmapCore, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\Games\Steam\steamapps\common\Beat Saber\Beat Saber_Data\Managed\BeatmapCore.dll</HintPath>
+    </Reference>
     <Reference Include="BSML, Version=1.3.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>E:\Games\Steam\steamapps\common\Beat Saber\Plugins\BSML.dll</HintPath>
@@ -129,7 +133,7 @@
     <Compile Include="Settings\Utilities\PluginConfig.cs" />
     <Compile Include="Utilities\PresetLoader.cs" />
     <Compile Include="Data\Preset.cs" />
-    <Compile Include="MapReader.cs" />
+    <Compile Include="Utilities\MapReader.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Utils.cs" />
@@ -148,13 +152,19 @@
     <EmbeddedResource Include="Resources\Images\RainbowModifier.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\DefaultPresets\" />
+    <EmbeddedResource Include="Data\DefaultPresets\cold.json" />
+    <EmbeddedResource Include="Data\DefaultPresets\dark.json" />
+    <EmbeddedResource Include="Data\DefaultPresets\pastel.json" />
+    <EmbeddedResource Include="Data\DefaultPresets\warm.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Images\error.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\test.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\DefaultPresets\original.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

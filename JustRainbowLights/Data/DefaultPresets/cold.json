@@ -1,0 +1,17 @@
+﻿{
+  "name": "Cold",
+  "description": "Random background using the cool color palette",
+  "icon": "cold.png",
+  "color1": {
+    "r": 0,
+    "g": 0,
+    "b": 0.5,
+    "a": 0.65
+  },
+  "color2": {
+    "r": 0.2,
+    "g": 1,
+    "b": 1,
+    "a": 0.9
+  }
+}

@@ -1,5 +1,6 @@
 ﻿using JustRainbowLights.Utilities;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 
 namespace JustRainbowLights.Data
@@ -24,19 +25,27 @@ namespace JustRainbowLights.Data
             Color2 = color2;
         }
 
-        public Preset(Dictionary<string, object> jsonData)
+        public void Init(Dictionary<string, object> jsonData)
         {
             Name = jsonData["name"].ToString();
             Description = jsonData["description"].ToString();
 
-            byte[] iconData = Utils.LoadFromResource($"JustRainbowLights.Resources.Images.{jsonData["icon"].ToString()}.png");
-            Icon = Utils.LoadTextureRaw(iconData);
-
-            Dictionary<string, object> c1Dic = Utils.ParseJsonFromString(jsonData["color1"].ToString());
+            try
+            {
+                byte[] iconData = Utils.LoadFromResource($"JustRainbowLights.Resources.Images.{jsonData["icon"].ToString()}");
+                Icon = Utils.LoadTextureRaw(iconData);
+            }
+            catch
+            {
+                Plugin.log.Warn("Could not load texture, reverting to default.");
+                Icon = Utils.GetDefaultIcon();
+            }
+            
+            var c1Dic = (JObject)jsonData["color1"];
             Color color1 = new Color((float)c1Dic["r"], (float)c1Dic["g"], (float)c1Dic["b"], (float)c1Dic["a"]);
             Color1 = color1;
 
-            Dictionary<string, object> c2Dic = Utils.ParseJsonFromString(jsonData["color2"].ToString());
+            var c2Dic = (JObject)jsonData["color2"];
             Color color2 = new Color((float)c2Dic["r"], (float)c2Dic["g"], (float)c2Dic["b"], (float)c2Dic["a"]);
             Color2 = color2;
         }
