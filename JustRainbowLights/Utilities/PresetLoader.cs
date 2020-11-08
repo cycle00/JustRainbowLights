@@ -44,7 +44,7 @@ namespace JustRainbowLights.Utilities
                 Plugin.log.Info($"{PresetFiles.Count()} preset file(s) found.");
 
                 Presets = LoadPresets(PresetFiles);
-                Plugin.log.Info($"{Presets.Count} presets(s) loaded.");
+                Plugin.log.Info($"{Presets.Count} preset(s) loaded.");
 
                 if (Configuration.SelectedPreset != null)
                 {

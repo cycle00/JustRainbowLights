@@ -41,12 +41,12 @@ namespace JustRainbowLights.Data
                 Icon = Utils.GetDefaultIcon();
             }
             
-            var c1Dic = (JObject)jsonData["color1"];
-            Color color1 = new Color((float)c1Dic["r"], (float)c1Dic["g"], (float)c1Dic["b"], (float)c1Dic["a"]);
+            var c1 = (JObject)jsonData["color1"];
+            Color color1 = new Color((float)c1["r"], (float)c1["g"], (float)c1["b"], (float)c1["a"]);
             Color1 = color1;
 
-            var c2Dic = (JObject)jsonData["color2"];
-            Color color2 = new Color((float)c2Dic["r"], (float)c2Dic["g"], (float)c2Dic["b"], (float)c2Dic["a"]);
+            var c2 = (JObject)jsonData["color2"];
+            Color color2 = new Color((float)c2["r"], (float)c2["g"], (float)c2["b"], (float)c2["a"]);
             Color2 = color2;
         }
 
