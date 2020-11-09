@@ -1,0 +1,14 @@
+﻿<vertical xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd">
+  <horizontal bg="panel-top" pad-left="10" horizontal-fit="PreferredSize">
+    <text text="Preset Description" align="Center" font-size="10" />
+  </horizontal>
+  <horizontal preferred-width="110" preferred-height="45">
+    <text-page id="preset-description" />
+  </horizontal>
+  <horizontal pad-right="5" pad-left="5">
+    <bool-setting text="Enable Rainbow Lights" align="BottomLeft" value="enable" apply-on-change="true" font-size="6" hover-hint="Enables or disables rainbow lighting" />
+  </horizontal>
+  <horizontal>
+    <text text="(Would you even turn this off?)" align="Center" color="grey" />
+  </horizontal>
+</vertical>

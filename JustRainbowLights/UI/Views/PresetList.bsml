@@ -1,0 +1,7 @@
+﻿<horizontal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd">
+  <vertical>
+    <page-button event-click="presetList#PageUp" direction="Up" />
+    <list id="presetList" expand-cell="true" select-cell="presetSelect" />
+    <page-button event-click="presetList#PageUp" direction="Down" />
+  </vertical>
+</horizontal>

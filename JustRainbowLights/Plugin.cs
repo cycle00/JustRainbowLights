@@ -1,4 +1,5 @@
-﻿using JustRainbowLights.Data;
+﻿using JustRainbowLights.UI;
+using JustRainbowLights.Data;
 using JustRainbowLights.Settings;
 using JustRainbowLights.Utilities;
 using IPA;
@@ -13,7 +14,7 @@ using System.IO;
 
 namespace JustRainbowLights
 {
-    [Plugin(RuntimeOptions.SingleStartInit)]
+    [Plugin(RuntimeOptions.DynamicInit)]
     public class Plugin
     {
         public static IPA.Logging.Logger log { get; private set; }
@@ -50,6 +51,7 @@ namespace JustRainbowLights
         {
             Configuration.Load();
             PresetLoader.Load();
+            SettingsUI.CreateMenu();
             AddEvents();
 
             log.Info($"JustRainbowLights v.{PluginVersion} has successfully started");
@@ -60,7 +62,7 @@ namespace JustRainbowLights
             RemoveEvents();
             Configuration.Save();
             PresetLoader.Clear();
-
+            SettingsUI.RemoveMenu();
         }
 
         private void AddEvents()
