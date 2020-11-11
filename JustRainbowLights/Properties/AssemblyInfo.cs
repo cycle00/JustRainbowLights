@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("JustRainbowLights")]
 [assembly: AssemblyDescription("BeatSaber Mod")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("CycleWeeb")]
+[assembly: AssemblyCompany("Cycle00")]
 [assembly: AssemblyProduct("JustRainbowLights")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]

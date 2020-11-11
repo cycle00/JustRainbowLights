@@ -5,7 +5,7 @@
   "gameVersion": "1.12.2",
   "id": "JustRainbowLights",
   "name": "JustRainbowLights",
-  "version": "2.0.0",
+  "version": "2.0.0-pre1",
   "features": [],
   "dependsOn": {
     "BeatSaberMarkupLanguage": "^1.4.0",
@@ -13,7 +13,7 @@
     "SongCore": "^3.0.0",
     "BS Utils": "^1.6.1"
   },
-  "icon": "Img/raiinbow.png",
+  "icon": "Resources/Images/default.png",
   "links": {
     "project-source": "https://github.com/CycleWeeb/JustRainbowLights"
   }
