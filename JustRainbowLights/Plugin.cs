@@ -51,7 +51,7 @@ namespace JustRainbowLights
         {
             Configuration.Load();
             PresetLoader.Load();
-            //SettingsUI.CreateMenu(); // uncomment when fixed
+            SettingsUI.CreateMenu(); // uncomment when fixed
             AddEvents();
 
             log.Info($"JustRainbowLights v.{PluginVersion} has successfully started");
@@ -62,7 +62,7 @@ namespace JustRainbowLights
             RemoveEvents();
             Configuration.Save();
             PresetLoader.Clear();
-            //SettingsUI.RemoveMenu(); // uncomment when fixed
+            SettingsUI.RemoveMenu(); // uncomment when fixed
         }
 
         private void AddEvents()

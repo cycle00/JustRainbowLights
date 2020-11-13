@@ -1,5 +1,5 @@
 ﻿<vertical xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd">
-  <horizontal bg="panel-top" pad-left="10" horizontal-fit="PreferredSize">
+  <horizontal bg="panel-top" pad-left="9" horizontal-fit="PreferredSize">
     <text text="Preset Description" align="Center" font-size="10" />
   </horizontal>
   <horizontal preferred-width="110" preferred-height="45">

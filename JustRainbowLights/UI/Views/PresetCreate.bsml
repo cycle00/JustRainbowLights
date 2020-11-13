@@ -1,0 +1,39 @@
+﻿<bg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd">
+  <modal-keyboard id="nameKeyboard" move-to-center="true" value="name" show-event="open-nameKeyboard" hide-event="close-nameKeyboard,closeAllModals" clear-on-open="true" clickerino-offerino-closerino="true" />
+  <modal-keyboard id="descriptionKeyboard" move-to-center="true" value="description" show-event="open-descriptionKeyboard" hide-event="close-descriptionKeyboard,closeAllModals" clear-on-open="false" clickerino-offerino-closerino="true" />
+  <modal id="iconModal" move-to-center="true" show-event="open-iconModal" hide-event="close-iconModal,closeAllModals" size-delta-x="50" size-delta-y="75" clickerino-offerino-closerino="true">
+    <vertical>
+      <page-button event-click="iconList#PageUp" pref-width="14" direction="Up" />
+      <list id="iconList" expand-cell="false" select-cell="iconSelect" />
+      <page-button event-click="iconList#PageDown" pref-height="14" direction="Down" />
+    </vertical>
+  </modal>
+  <vertical>
+    <horizontal spacing="2">
+      <button id="changeNameButton" pref-height="8" pref-width="20" text="Name" hover-hint="Change the name of the preset" on-click="nameChangeButtonPressed" click-event="open-nameKeyboard" align="Center" />
+      <button id="changeDescriptionButton" pref-height="8" pref-width="20" text="Description" hover-hint="Change the description of the preset" on-click="descriptionChangeButtonPressed" click-event="open-descriptionKeyboard" align="Center" />
+      <button id="savePresetButton" pref-height="8" pref-width="20" text="Save" hover-hint="Save the current preset" on-click="savePresetButtonPressed" />
+      <button id="cancelButton" pref-height="8" pref-width="20" text="Cancel" hover-hint="Cancel current changes and revert to previous save" on-click="cancelButtonPressed" />
+    </horizontal>
+    <text text="Name" id="nameText" font-size="4" />
+    <horizontal pref-height="10" pref-width="110">
+      <text-page id="descriptionTextPage" />
+    </horizontal>
+    <horizontal spacing="2">
+      <slider-setting text="Red 1" min="0" max="1" increment="0.01" value="red1SliderValue" integer-only="false" />
+      <slider-setting text="Red 2" min="0" max="1" increment="0.01" value="red2SliderValue" integer-only="false" />
+    </horizontal>
+    <horizontal spacing="2">
+      <slider-setting text="Green 1" min="0" max="1" increment="0.01" value="green1SliderValue" integer-only="false" />
+      <slider-setting text="Green 2" min="0" max="1" increment="0.01" value="green2SliderValue" integer-only="false" />
+    </horizontal>
+    <horizontal spacing="2">
+      <slider-setting text="Blue 1" min="0" max="1" increment="0.01" value="blue1SliderValue" integer-only="false" />
+      <slider-setting text="Blue 2" min="0" max="1" increment="0.01" value="blue2SliderValue" integer-only="false" />
+    </horizontal>
+    <horizontal spacing="2">
+      <slider-setting text="Brightness 1" min="0" max="1" increment="0.01" value="bright1SliderValue" integer-only="false" />
+      <slider-setting text="Brightness 2" min="0" max="1" increment="0.01" value="bright2SliderValue" integer-only="false" />
+    </horizontal>
+  </vertical>
+</bg>

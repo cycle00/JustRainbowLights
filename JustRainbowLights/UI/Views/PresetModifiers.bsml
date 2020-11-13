@@ -1,9 +1,9 @@
 ﻿<bg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd">
   <settings-container min-width="7">
     <modifier value="enableToggle" on-change="setEnableToggle" source="JustRainbowLights.Resources.Images.RainbowModifier.png" text="Enable Lighting" hover-hint="Emable Rainbow Lighting" />
-    <horizontal>
+    <horizontal spacing="3">
       <img preserve-aspect="true" preferred-height="5.25" preferred-width="5.25" src="JustRainbowLights.Resources.Images.RainbowModifier.png" />
-      <dropdown-list-setting on-change="setPreset" font-size="4" options="presets" value="preset" text="   Preset" />
+      <dropdown-list-setting on-change="setPreset" font-size="4" options="presets" value="preset" text="Preset" />
     </horizontal>
   </settings-container>
 </bg>

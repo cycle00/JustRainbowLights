@@ -9,7 +9,7 @@ namespace JustRainbowLights.UI
 {
     internal class PresetMoreViewController : BSMLResourceViewController
     {
-        public override string ResourceName => "JustRainbowLights.UI.Views.presetMore.bsml";
+        public override string ResourceName => "JustRainbowLights.UI.Views.PresetMore.bsml";
 
         [UIComponent("preset-description")]
         public TextPageScrollView presetDescription = null;

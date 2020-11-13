@@ -6,7 +6,6 @@ using JustRainbowLights.Settings;
 using JustRainbowLights.Utilities;
 using HMUI;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JustRainbowLights.UI
