@@ -8,32 +8,42 @@
       <page-button event-click="iconList#PageDown" pref-height="14" direction="Down" />
     </vertical>
   </modal>
-  <vertical>
+  <modal id="rModal" move-to-center="true" show-event="open-rModal" hide-event="close-rModal,closeAllModals" clickerino-offerino-closerino="true">
+    <vertical spacing="2">
+      <slider-setting id="red1Slider" integer-only="false" apply-on-change="true" text="Red 1" min="0" max="1"/>
+      <slider-setting id="red2Slider" integer-only="false" apply-on-change="true" text="Red 2" min="0" max="1" />
+    </vertical>
+  </modal>
+  <modal id="gModal" move-to-center="true" show-event="open-gModal" hide-event="close-gModal,closeAllModals" clickerino-offerino-closerino="true">
+    <vertical spacing="2">
+      <slider-setting id="green1Slider" integer-only="false" apply-on-change="true" text="Green 1" min="0" max="1"/>
+      <slider-setting id="green2Slider" integer-only="false" apply-on-change="true" text="Green 2" min="0" max="1"/>
+    </vertical>
+  </modal>
+  <modal id="bModal" move-to-center="true" show-event="open-bModal" hide-event="close-bModal,closeAllModals" clickerino-offerino-closerino="true">
+    <vertical spacing="2">
+      <slider-setting id="blue1Slider" integer-only="false" apply-on-change="true" text="Blue 1" min="0" max="1" />
+      <slider-setting id="blue2Slider" integer-only="false" apply-on-change="true" text="Blue 2" min="0" max="1" />
+    </vertical>
+  </modal>
+  <modal id="aModal" move-to-center="true" show-event="open-aModal" hide-event="close-aModal,closeAllModals" clickerino-offerino-closerino="true">
+    <vertical spacing="2">
+      <slider-setting id="alpha1Slider" integer-only="false" apply-on-change="true" text="Brightness 1" min="0" max="1" />
+      <slider-setting id="alpha2Slider" integer-only="false" apply-on-change="true" text="Brightness 2" min="0" max="1" />
+    </vertical>
+  </modal>
+  <vertical spacing="3">
     <horizontal spacing="2">
-      <button id="changeNameButton" pref-height="8" pref-width="20" text="Name" hover-hint="Change the name of the preset" on-click="nameChangeButtonPressed" click-event="open-nameKeyboard" align="Center" />
-      <button id="changeDescriptionButton" pref-height="8" pref-width="20" text="Description" hover-hint="Change the description of the preset" on-click="descriptionChangeButtonPressed" click-event="open-descriptionKeyboard" align="Center" />
-      <button id="savePresetButton" pref-height="8" pref-width="20" text="Save" hover-hint="Save the current preset" on-click="savePresetButtonPressed" />
-      <button id="cancelButton" pref-height="8" pref-width="20" text="Cancel" hover-hint="Cancel current changes and revert to previous save" on-click="cancelButtonPressed" />
+      <button id="nameButton" on-click="onNameButtonClick" click-event="open-nameKeyboard" text="Name"/>
+      <button id="descriptionButton" on-click="onDescriptionButtonClick" click-event="open-descriptionKeyboard" text="Description" />
+      <button id="iconButton" on-click="onIconButtonClick" click-event="open-iconModal" text="Icon" />
     </horizontal>
-    <text text="Name" id="nameText" font-size="4" />
-    <horizontal pref-height="10" pref-width="110">
-      <text-page id="descriptionTextPage" />
-    </horizontal>
+    <text-page id="descriptionText" />
     <horizontal spacing="2">
-      <slider-setting text="Red 1" min="0" max="1" increment="0.01" value="red1SliderValue" integer-only="false" />
-      <slider-setting text="Red 2" min="0" max="1" increment="0.01" value="red2SliderValue" integer-only="false" />
-    </horizontal>
-    <horizontal spacing="2">
-      <slider-setting text="Green 1" min="0" max="1" increment="0.01" value="green1SliderValue" integer-only="false" />
-      <slider-setting text="Green 2" min="0" max="1" increment="0.01" value="green2SliderValue" integer-only="false" />
-    </horizontal>
-    <horizontal spacing="2">
-      <slider-setting text="Blue 1" min="0" max="1" increment="0.01" value="blue1SliderValue" integer-only="false" />
-      <slider-setting text="Blue 2" min="0" max="1" increment="0.01" value="blue2SliderValue" integer-only="false" />
-    </horizontal>
-    <horizontal spacing="2">
-      <slider-setting text="Brightness 1" min="0" max="1" increment="0.01" value="bright1SliderValue" integer-only="false" />
-      <slider-setting text="Brightness 2" min="0" max="1" increment="0.01" value="bright2SliderValue" integer-only="false" />
+      <button id="redButton" on-click="onRedButtonClick" click-event="open-rModal" text="Red" outline-color="red" />
+      <button id="greenButton" on-click="onGreenButtonClick" click-event="open-gModal" text="Green" outline-color="green" />
+      <button id="blueButton" on-click="onBlueButtonClick" click-event="open-bModal" text="Blue" outline-color="blue" />
+      <button id="alphaButton" on-click="onAlphaButtonClick" click-event="open-aModal" text="Green" outline-color="white" />
     </horizontal>
   </vertical>
 </bg>
